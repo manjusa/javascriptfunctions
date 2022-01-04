@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>use of reduce</h2>
+
+    <p>
+      Play around with the code and click on the "Run" button to view the
+      result.
+    </p>
+
+    <p id="demo"></p>
+
+    <script>
+      const tasks = [
+        {
+          name: "Write for Envato Tuts+",
+          duration: 120,
+        },
+        {
+          name: "Work out",
+          duration: 60,
+        },
+        {
+          name: "Procrastinate on Duolingo",
+          duration: 240,
+        },
+        {
+          name: "manju",
+          duration: 110,
+        },
+        {
+          name: "manju1",
+          duration: 150,
+        },
+        {
+          name: "manju2",
+          duration: 290,
+        },
+      ];
+      //https://blog.nona.digital/understanding-javascript-reduce-and-its-use-cases/
+      //https://www.freecodecamp.org/news/reduce-f47a7da511a9/
+      //https://blog.khanacademy.org/lets-reduce-a-gentle-introduction-to-javascripts-reduce-method/
+      //calculate time spent by all people
+      let totalDuration = tasks.reduce(
+        (result, curr) => curr.duration + result,
+        0
+      );
+      //console.log(totalDuration);
+
+      let total = [1, 2, 3].reduce((total, number) => total + number); // returns 6
+
+      console.log(total);
+      let totalAvg = [1, 2, 3].reduce((total, number, index, array) => {
+        total += number;
+        if (index === array.length - 1) return total / array.length;
+        return total;
+      }); // returns 6
+
+      console.log(totalAvg);
+      const blogatricles = [
+        {
+          name: "article1",
+          comments: ["good", "bad"],
+        },
+        {
+          name: "article2",
+          comments: ["good", "ugly"],
+        },
+      ];
+
+      //let comments=blogatricles.reduce((allcomments, comment) => total + number) // returns 6
+
+      const fruitBasket = [
+        "banana",
+        "cherry",
+        "orange",
+        "apple",
+        "cherry",
+        "orange",
+        "apple",
+        "banana",
+        "cherry",
+        "orange",
+        "fig",
+      ];
+      const count = fruitBasket.reduce((tally, fruit) => {
+        tally[fruit] = ++tally[fruit] || 0;
+        return tally;
+      }, {});
+
+      /*  const count = fruitBasket.reduce((tally, fruit) => {
+        //console.log("tally"+tally[fruit]);
+        tally[fruit] = ++tally[fruit] || 0;
+        return tally;
+      }, {});
+ */
+
+      document.getElementById("demo").innerHTML = count;
+      console.log(...count); // { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }
+    </script>
+  </body>
+</html>

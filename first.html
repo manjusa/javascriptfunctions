@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>My Heading</h2>
+
+    <p>
+      Play around with the code and click on the "Run" button to view the
+      result.
+    </p>
+
+    <p id="demo"></p>
+
+    <script>
+      const tasks = [
+        {
+          name: "Write for Envato Tuts+",
+          duration: 120,
+        },
+        {
+          name: "Work out",
+          duration: 60,
+        },
+        {
+          name: "Procrastinate on Duolingo",
+          duration: 240,
+        },
+        {
+          name: "manju",
+          duration: 110,
+        },
+        {
+          name: "manju1",
+          duration: 150,
+        },
+        {
+          name: "manju2",
+          duration: 290,
+        },
+      ];
+
+      var names = [];
+
+      for (var i = 0; i < tasks.length; i++) {
+        names.push(tasks[i].name.toUpperCase());
+      }
+
+      console.log("1) names in normal for loop is " + names);
+
+      var names1 = [];
+
+      tasks.forEach((task) => {
+        names1.push(task.name.toUpperCase());
+      });
+
+      console.log("2)names in forEach loop is" + names);
+
+      let names2 = tasks.map((task) => task.name.toUpperCase());
+
+      console.log("3) names as of map is " + names2);
+
+      let names3 = tasks.map(function (task, index, array) {
+        return task.name + "index is" + index;
+      });
+
+      console.log("3a) names as of map is (not arrow function) " + names3);
+
+      let difficult_tasks = tasks.filter((x) => x.duration >= 400);
+      console.log("4) difficult tasks" + difficult_tasks.length == 0);
+
+      let difficult_tasks1 = tasks
+        .filter((x) => x.duration >= 400)
+        .map((x) => console.log("6 is " + x));
+      console.log("5 ) difficult tasks" + difficult_tasks.length == 0);
+
+      let characterlengthinNames = tasks
+        .filter((task) => task.duration > 110)
+        .map((y) => y.name.length);
+      console.log("6) length of names" + characterlengthinNames);
+      let characterlengthinNames1 = tasks
+        .filter((task) => task.duration > 110)
+        .map((y) => {
+          return { name: y.name, length: y.name.length };
+        });
+      console.log(...characterlengthinNames1);
+
+      //calculate time spent by all people
+      let totalDuration = tasks.reduce(
+        (result, curr) => curr.duration + result,
+        0
+      );
+      console.log(totalDuration);
+      let totalDuration1 = tasks.reduce(test, 0);
+
+      function test(result, curr) {
+        console.log("result and current is" + result + "aa" + curr.duration);
+        return (result = curr.duration + result);
+      }
+      console.log(totalDuration1);
+    </script>
+  </body>
+</html>
